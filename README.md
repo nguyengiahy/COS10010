@@ -1,1 +1,1 @@
-# COS10010
+Creating web applications tutorial solutions
