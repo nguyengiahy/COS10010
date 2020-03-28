@@ -1,1 +1,1 @@
-Creating web applications tutorial solutions
+Creating web applications tutorial solutions and assignments
