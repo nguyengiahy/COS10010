@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="COS100011 assignment 1">
+	<meta name="keywords"    content="COS100011, assignment 1, creating web applications">
+	<meta name="author"      content="Hy Gia Nguyen">
+	<meta name="viewport"	 content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" type="text/css" href="styles/style.css">
+	<title>Enquiry</title>
+</head>
+<body>
+
+	<header>
+		<nav>
+			<!-- Logo image with anchor tag link to home page -->
+			<a href="index.html" id="logo">
+				<img src="images/logo.jpg" title="Home" alt="Company Logo" height="75" width="200">
+			</a>
+			<!-- Navigation links -->
+			<ul>      
+				<li><a href="index.html">Home</a></li>
+				<li><a href="about.html">About</a></li>
+                <li><a href="product.html">Products</a></li>
+                <li><a class="active" href="enquire.html">Enquiry</a></li>
+                <li><a href="enhancements.html">Enhancements</a></li>
+                <li><a href="mailto:101922778@student.swin.edu.au" target="blank">Contact Us</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<section>
+		<h1 class="align-center">Application Form</h1>
+            <!-- Form -->
+            <form class="container" method="post" action="https://mercury.swin.edu.au/it000000/formtest.php">
+                <fieldset>
+                    <legend>Applicant details</legend>
+                    <p>
+                        <label for="first_name">First Name:</label>
+                        <input type="text" name="first_name" id="first_name" maxlength="25" size="30"
+                            pattern="[a-zA-Z]{1,25}" required="required" />
+                    </p>
+                    <p>
+                        <label for="last_name">Last Name:</label>
+                        <input type="text" name="last_name" id="last_name" maxlength="25" size="30"
+                            pattern="[a-zA-Z]{1,25}" required="required" />
+                    </p>
+                    <p>
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" id="email" 
+                        	pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 4}" required="required" />
+                    </p>
+
+                    <fieldset>
+                        <legend>Address</legend>
+                        <p>
+	                        <label for="address">Street Address:</label>
+	                        <input type="text" name="address" id="address" maxlength="40" size="45"
+	                            pattern="[A-Za-z0-9'\.\-\s\,]{1,40}" required="required" />
+	                    </p>
+	                    <p>
+	                        <label for="suburb">Suburb/Town:</label>
+	                        <input type="text" name="suburb" id="suburb" maxlength="20" size="25"
+	                            pattern="[a-zA-Z]{1,20}" required="required" />
+	                    </p>
+	                    <p>
+	                        <label for="state">State:</label>
+	                        <select required='required' id="state" name="state">
+			                    <option value="">Please select</option>
+			                    <option value="VIC">VIC</option>
+			                    <option value="NSW">NSW</option>
+			                    <option value="QLD">QLD</option>
+			                    <option value="NT">NT</option>
+			                    <option value="WA">WA</option>
+			                    <option value="SA">SA</option>
+			                    <option value="TAS">TAS</option>
+			                    <option value="ACT">ACT</option>
+                			</select>
+	                    </p>
+	                    <p>
+                            <label for="post_code">Post Code</label>
+                            <input type="text" name="post_code" id="post_code" maxlength="4" size="4"
+                                pattern="\d{4}" required="required" />
+                        </p>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Contact Details</legend>
+                        <p>
+                            <label for="phone">Phone Number</label>
+                            <input type="text" name="phone" id="phone" maxlength="20" size="20"
+                                pattern="[\d\s]{8,12}" required="required" />
+                        </p>
+                        <div>
+                        	<p>Preferred Contact:</p>
+                        	<p>
+                        		<input type="radio" id="by_email" name="Contact" required="required" value="by_email" 
+			                    	   checked='checked'>
+			                    <label for="by_email">Email</label>
+			                    <span>
+			                    	<input type="radio" id="by_post" name="Contact" value="by_post"/>
+			                        <label for="by_post">Post</label>
+			                    </span>
+			                    <span>
+			                    	<input type="radio" id="by_phone" name="Contact" value="by_phone"/>
+			                        <label for="by_phone">Phone</label>
+			                    </span>
+                			</p>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Enquiry</legend>
+                        <p>
+                        	<label for="enquire_about">Product:</label>
+	                        <select required='required' id="enquire_about" name="enquire_about">
+			                    <option value="">What issue you want to enquire about</option>
+			                    <option value="car_price">Car prices</option>
+			                    <option value="warranty">Warranty</option>
+			                    <option value="services">Car services</option>
+                			</select>
+                        </p>
+                        <div>
+                        	<p>Product features</p>
+                            <p>
+                            	<input type="checkbox" name="features[]" value="feature1" id="ft1" checked="checked">
+                            	<label for="ft1">Feature 1</label>
+                            </p>
+                            <p>
+                            	<input type="checkbox" name="features[]" value="feature2" id="ft2">
+                        		<label for="ft2">Feature 2</label>
+                        	</p>
+                        	<p>
+                        		<input type="checkbox" name="features[]" value="feature3" id="ft3">
+                        		<label for="ft3">Feature 3</label>
+                            </p>
+                        </div>
+                        
+                        <p>
+                            <label for="cmt_text">Comments</label>
+                        </p>
+                        <p>
+                            <textarea id="cmt_text" name="comments" rows="4" cols="80"
+                                placeholder="Write your comment here..."></textarea>
+                        </p>
+                    </fieldset>
+                </fieldset>
+
+                <!-- Submit and reset buttons -->
+                <input class="button" type="submit" value="Submit" />
+                <input class="button" type="reset" value="Reset Form" />
+            </form>
+	</section>
+
+    <!-- Footer -->
+	<footer>
+		<p> <a href="https://www.swinburne.edu.au">&copy; Swinburne University of Technology</a>
+			<span>Mark up by: </span>
+			<a href="mailto:101922778@student.swin.edu.au">Hy Gia Nguyen</a>
+		</p>
+	</footer>
+</body>
+</html>
