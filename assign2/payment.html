@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="COS100011 assignment 2">
+	<meta name="keywords"    content="COS100011, assignment 2, creating web applications">
+	<meta name="author"      content="Hy Gia Nguyen">
+	<meta name="viewport"	 content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" type="text/css" href="styles/style.css">
+    <script src="scripts/payment.js"></script>
+	<title>Payment</title>
+</head>
+<body>
+	<header>				<!-- Header section -->
+		<nav>
+			<!-- Logo image with anchor tag link to home page -->
+			<a href="index.html" id="logo">
+				<img src="images/logo.jpg" title="Home" alt="Company Logo" height="75" width="200">
+			</a>
+			<!-- Navigation links -->
+			<ul>      
+				<li><a href="index.html">Home</a></li>
+				<li><a href="about.html">About</a></li>
+                <li><a href="product.html">Products</a></li>
+                <li><a href="enquire.html">Enquiry</a></li>
+                <li><a href="enhancements.html">Enhancements</a></li>
+                <li><a class="active" href="payment.html">Payment</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		<h1>Please confirm the information below</h1>
+		<form id="paymentForm" method="post" action="https://mercury.swin.edu.au/it000000/formtest.php">
+			<fieldset>				<!-- Customer's personal details -->
+				<legend>Personal details</legend>
+				<p>Full Name: <span id="fullName"></span></p>
+				<p>Email: <span id="email"></span></p>
+				<p>Address: <span id="address"></span></p>
+				<p>Suburb/Town: <span id="suburb"></span></p>
+				<p>State: <span id="state"></span></p>
+				<p>Post Code: <span id="postCode"></span></p>
+				<p>Phone number: <span id="phone"></span></p>
+				<p>Contact method: <span id="contact"></span></p>
+			</fieldset>
+
+			<fieldset>				<!-- Customer's enquiry details -->
+				<legend>Your enquiries</legend>
+				<p>Enquire about: <span id="enquire"></span></p>
+				<p>Chosen product features: <span id="feature"></span></p>
+				<p>Your comment: <span id="comment"></span></p>
+			</fieldset>
+
+			<fieldset>				<!-- Purchase information -->
+				<legend>Your Selected Products</legend>
+				<div id="purchases"></div>
+				<p>Total bill: <span id="cost"></span></p>
+			</fieldset>
+
+			<fieldset>				<!-- Payment and card details -->
+				<legend>Payment details</legend>
+				<p>																<!-- Card types -->
+					<label for="cardType">Card Type:</label>
+					<select name="cardType" id="cardType">
+						<option value="visa">Visa</option>			
+						<option value="master">MasterCard</option>
+						<option value="amex">American Express</option>
+					</select>
+				</p>	
+				<p>																<!-- Name on card -->
+					<label for="cardName">Name on Card:</label> 
+					<input type="text" name= "cardName" id="cardName" >
+				</p>
+				<p> 															<!-- Card number -->
+					<label for="cardNumber">Card Number:</label> 
+					<input type="text" name= "cardNumber" id="cardNumber"  >
+				</p>
+				<p> 															<!-- Expiry date -->
+					<label for="cardExpiry">Card Expiry date:</label> 
+					<input type="text" name= "cardExpiry" id="cardExpiry" placeholder="mm-yy" >
+				</p>
+				<p> 
+					<label for="cardCVV">Card verification value:</label> 
+					<input type="text" name= "cardCVV" id="cardCVV"  >
+				</p>
+			</fieldset>
+
+			<!-- All the hidden inputs are declared here -->
+			<input type="hidden" name="firstName" id="firstNameSend">
+			<input type="hidden" name="lastName" id="lastNameSend">
+			<input type="hidden" name="email" id="emailSend">
+			<input type="hidden" name="address" id="addressSend">
+			<input type="hidden" name="suburb" id="suburbSend">
+			<input type="hidden" name="state" id="stateSend">
+			<input type="hidden" name="postCode" id="postCodeSend">
+			<input type="hidden" name="phone" id="phoneSend">
+			<input type="hidden" name="contact" id="contactSend">
+			<input type="hidden" name="enquire" id="enquireSend">
+			<input type="hidden" name="features" id="featuresSend">
+			<input type="hidden" name="comment" id="commentSend">
+
+			<p>
+				<input type="submit" value="Check Out" class="button">
+				<input type="reset" value="Cancel Order" id="cancelOrder" class="button">
+			</p>
+		</form>
+
+		
+
+	</main>
+
+	<footer>				<!-- Footer section -->
+		<p> <a href="https://www.swinburne.edu.au">&copy; Swinburne University of Technology</a>
+			<span>Mark up by: </span>
+			<a href="mailto:101922778@student.swin.edu.au">Hy Gia Nguyen</a>
+		</p>
+	</footer>
+</body>
+</html>
