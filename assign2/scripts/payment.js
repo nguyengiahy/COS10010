@@ -41,25 +41,30 @@ function getInfo(){
 			document.getElementById("comment").textContent = localStorage.getItem("comment");
 
 			//Purchase section
-			var result = "";
-			var sum = 0;
+			var displayResult = "";		//data to be displayed on payment
+			var sendResult = "";		//date to be sent to server
+			var sum = 0;				//total cost
 			if (localStorage.getItem("mercCheckbox") == "true"){			//Mercedes chosen
-				result += displayProduct("merc");
+				displayResult += displayProduct("merc");
+				sendResult += sendDataProduct("merc");
 				sum += costCalc("merc");
 			}
 			if (localStorage.getItem("audiCheckbox") == "true"){				//Audi chosen
-				result += displayProduct("audi");
+				displayResult += displayProduct("audi");
+				sendResult += sendDataProduct("audi");
 				sum += costCalc("audi");
 			}
 			if (localStorage.getItem("bmwCheckbox") == "true"){				//BMW chosen
-				result += displayProduct("bmw");
+				displayResult += displayProduct("bmw");
+				sendResult += sendDataProduct("bmw");
 				sum += costCalc("bmw");
 			}
 			if (localStorage.getItem("teslaCheckbox") == "true"){			//Tesla chosen
-				result += displayProduct("tesla");
+				displayResult += displayProduct("tesla");
+				sendResult += sendDataProduct("tesla");
 				sum += costCalc("tesla");
 			}
-			document.getElementById("purchases").innerHTML = result;
+			document.getElementById("purchases").innerHTML = displayResult;
 			document.getElementById("cost").textContent = sum + "$";
 
 
@@ -67,17 +72,28 @@ function getInfo(){
 			document.getElementById("firstNameSend").value = localStorage.getItem("firstName");	 
 			document.getElementById("lastNameSend").value = localStorage.getItem("lastName");
 			document.getElementById("emailSend").value = localStorage.getItem("email");
+			document.getElementById("addressSend").value = localStorage.getItem("address");
+			document.getElementById("suburbSend").value = localStorage.getItem("suburb");
+			document.getElementById("stateSend").value = localStorage.getItem("state");
+			document.getElementById("postCodeSend").value = localStorage.getItem("postCode");
+			document.getElementById("phoneSend").value = localStorage.getItem("phone");
+			document.getElementById("contactSend").value = localStorage.getItem("contact");
+			document.getElementById("enquireSend").value = localStorage.getItem("enquire");
+			document.getElementById("featuresSend").value = ft;
+			document.getElementById("commentSend").value = localStorage.getItem("comment");
+			document.getElementById("purchasesSend").value = sendResult;
+			document.getElementById("costSend").value = sum + "$";
 		}
 	}
 }
 
 //Display chosen products data
 function displayProduct(brand){
-	var name = "";
-	var quantity = "";
-	var color = "";
-	var model = "";
-	var price = "";
+	var name = "";					//product's name
+	var quantity = "";				//product's quantity
+	var color = "";					//product's color
+	var model = "";					//product's model
+	var price = "";					//product's price
 
 	switch (brand){								//Get product's name
 		case "merc":
@@ -94,10 +110,10 @@ function displayProduct(brand){
 			break;
 	}
 
-	var quantityKey = brand + "Quantity";
-	var colorKey = brand + "Color";
-	var modelKey = brand + "Model";
-	var priceKey = brand + "Price";
+	var quantityKey = brand + "Quantity";		//quantity key to look for in local storage
+	var colorKey = brand + "Color";				//color key to look for in local storage
+	var modelKey = brand + "Model";				//model key to look for in local storage
+	var priceKey = brand + "Price";				//price key to look for in local storage
 
 	quantity = localStorage.getItem(quantityKey);	//get product's quantity
 	color = localStorage.getItem(colorKey);			//get product's color
@@ -133,6 +149,43 @@ function displayProduct(brand){
 	return result;
 }
 
+//Process product data to be sent to server 
+function sendDataProduct(brand){
+	var name = "";				//product's name
+	var quantity = "";			//product's quantity
+	var color = "";				//product's color
+	var model = "";				//product's model
+	var price = "";				//product's price
+
+	switch (brand){								//Get product's name
+		case "merc":
+			name = "Mercedes";
+			break;
+		case "audi":
+			name = "Audi";
+			break;
+		case "bmw":
+			name = "BMW";
+			break;
+		case "tesla":
+			name = "Tesla";
+			break;
+	}
+
+	var quantityKey = brand + "Quantity";
+	var colorKey = brand + "Color";
+	var modelKey = brand + "Model";
+	var priceKey = brand + "Price";
+
+	quantity = localStorage.getItem(quantityKey);	//get product's quantity
+	color = localStorage.getItem(colorKey);			//get product's color
+	model = localStorage.getItem(modelKey);			//get product's model
+	price = localStorage.getItem(priceKey);			//get product's price
+
+	var result = `${name} (${quantity}, ${color}, ${model}). `;
+	return result;
+}
+
 //Calculate cost of products
 function costCalc(brand){
 	var result = 0;
@@ -140,16 +193,16 @@ function costCalc(brand){
 	var quantity = Number(localStorage.getItem(quantityKey));		//get the quantity
 	switch (brand){
 		case "merc":
-			result = 130000 * quantity;
+			result = 130000 * quantity;			//mercedes price calculated
 			break;
 		case "audi":
-			result = 99000 * quantity;
+			result = 99000 * quantity;			//audi price calculated
 			break;
 		case "bmw":
-			result = 164000 * quantity;
+			result = 164000 * quantity;			//bmw price calculated
 			break;
 		case "tesla":
-			result = 245000 * quantity;
+			result = 245000 * quantity;			//tesla price calculated
 			break;	
 	}
 	return result;													//return the total cost
@@ -157,7 +210,86 @@ function costCalc(brand){
 
 //Validate the payment details
 function validatePayment(){
+	var name = document.getElementById("cardName").value.trim();					//name on card
+	var cardNumber = document.getElementById("cardNumber").value.trim();			//credit card number
+	var cardType = document.getElementById("cardType").value.trim();				//card type
+	var expiry = document.getElementById("cardExpiry").value.trim();				//card expiry date
+	var CVV = document.getElementById("cardCVV").value.trim();						//card CVV number
+	var errMsg = "";
+	var result = true;
 
+	//Card name validation
+	if (name == ""){
+		errMsg += "Name of card cannot be left blank.\n";
+		result = false;
+	}
+	else if (!(name.match(/^[a-zA-Z ]+$/))){							//check if name on card only contains alphabetical and space
+		errMsg += "Card name can only contains alphabetical characters and spaces.\n";
+		result = false;
+	}
+	else if (name.length > 40){											//check if length of name on card is not over 40
+		errMsg += "Length of name of card cannot exceed 40 characters"
+		result = false;
+	}
+
+	//Credit card number validation
+	switch (cardType){
+		case "visa": 																							//post code check for visa type
+			if (cardNumber[0] != "4"){																			//check if first number is 4
+				errMsg += "Visa card number must start with 4.\n";
+				result = false;
+			}
+			else if (!(cardNumber.match(/^\d{16}$/))){															//check if length is 16 and only contains numbers
+				errMsg += "Visa card number must be 16 digits and contains numbers only.\n";
+				result = false;
+			}
+			break;
+		case "master": 																							//post code check for mastercard type
+			if (!(cardNumber[0] == "5" && (Number(cardNumber[1]) >= 1 && Number(cardNumber[1]) <= 5))){			//check if first 2 numbers are 51->55
+				errMsg += `MasterCard must start with digits "51" through to "55".\n`;
+				result = false;
+			}
+			else if (!(cardNumber.match(/^\d{16}$/))){															//check if length is 16 and only contains numbers
+				errMsg += "MasterCard number must be 16 digits and contains numbers only.\n";
+				result = false;
+			}
+			break;
+		case "amex": 																							//post code check for amex type
+			if (!(cardNumber[0] == "3" && (cardNumber[1] == "4" || cardNumber[1] == "7"))){						//check if first 2 numbers are 34 or 37
+				errMsg += `American Express must start with "34" or "37".\n`;
+				result = false;
+			}
+			else if (!(cardNumber.match(/^\d{15}$/))){															//check if length is 15 and only contains numbers
+				errMsg += "MasterCard number must be 15 digits and contains numbers only.\n";
+				result = false;
+			}
+			break;
+	}
+
+	//Card expiry date validation
+	if (expiry == ""){
+		errMsg += "Card expiry date cannot be left blank.\n";					//Check if expiry date is left empty
+		result = false;
+	}
+	else if (!(expiry.match(/^\d{2}-\d{2}$/))){									//check if the format is matched with mm-dd
+		errMsg += "Please enter expiry in the format of mm-yy.\n";
+		result = false;
+	}
+
+	//CVV validation
+	if (CVV == ""){
+		errMsg += "CVV cannot be left blank.\n";								//Check if CVV is left empty
+		result = false;
+	}
+	else if (!(CVV.match(/^\d{3}$/))){
+		errMsg += "CVV must be a 3-digit number.\n";							//check if CVV is a 3-digit number
+		result = false;
+	}
+	
+	if (errMsg != "")															//display error message if there is any error occurred
+		alert(errMsg);
+
+	return result;
 }
 
 //Clear storage memory and redirect to home page

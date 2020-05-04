@@ -8,12 +8,14 @@
 	<meta name="viewport"	 content="width=device-width, initial-scale=1">
 
 	<link rel="stylesheet" type="text/css" href="styles/style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">  <!-- this is for the icon of scroll to top button -->
     <script src="scripts/enquire.js"></script>
+    <script src="scripts/enhancements.js"></script>
 	<title>Enquiry</title>
 </head>
 <body>
 
-	<header>
+	<header>                   <!-- header section with navigation bar -->
 		<nav>
 			<!-- Logo image with anchor tag link to home page -->
 			<a href="index.html" id="logo">
@@ -25,48 +27,49 @@
 				<li><a href="about.html">About</a></li>
                 <li><a href="product.html">Products</a></li>
                 <li><a class="active" href="enquire.html">Enquiry</a></li>
-                <li><a href="enhancements.html">Enhancements</a></li>
+                <li><a href="enhancements2.html">Enhancements</a></li>
                 <li><a href="payment.html">Payment</a></li>
 			</ul>
 		</nav>
 	</header>
 
-	<section>
+	<section>              <!-- main content starts here -->
 		<h1 class="align-center">Application Form</h1>
+        <button id="scrollToTopButton"><i class="fa fa-arrow-up"></i></button>
             <!-- Form -->
             <form class="container" method="post" action="payment.html" id="enquireForm">
-                <fieldset>
+                <fieldset>                                                          <!-- Personal details -->
                     <legend>Applicant details</legend>
                     <p>
-                        <label for="first_name">First Name:</label>
+                        <label for="first_name">First Name:</label>                    <!-- first name -->
                         <input type="text" name="first_name" id="first_name" maxlength="25" size="30"
                             pattern="[a-zA-Z]{1,25}" required="required" />
                     </p>
                     <p>
-                        <label for="last_name">Last Name:</label>
+                        <label for="last_name">Last Name:</label>                       <!-- last name -->
                         <input type="text" name="last_name" id="last_name" maxlength="25" size="30"
                             pattern="[a-zA-Z]{1,25}" required="required" />
                     </p>
-                    <p>
-                        <label for="email">Email:</label>
+                    <p> 
+                        <label for="email">Email:</label>                               <!-- email -->
                         <input type="email" name="email" id="email" required="required" />
                     </p>
 
                     <fieldset>
                         <legend>Address</legend>
-                        <p>
-	                        <label for="address">Street Address:</label>
+                        <p> 
+	                        <label for="address">Street Address:</label>               <!-- address -->
 	                        <input type="text" name="address" id="address" maxlength="40" size="45" required="required" />
 	                    </p>
 	                    <p>
-	                        <label for="suburb">Suburb/Town:</label>
+	                        <label for="suburb">Suburb/Town:</label>                   <!-- suburb -->
 	                        <input type="text" name="suburb" id="suburb" maxlength="20" size="25"
 	                            pattern="[a-zA-Z]{1,20}" required="required" />
 	                    </p>
 	                    <p>
-	                        <label for="state">State:</label>
-	                        <select required='required' id="state" name="state">
-			                    <option value="none">Please select</option>
+	                        <label for="state">State:</label>                            <!-- state -->
+	                        <select id="state" name="state">
+			                    <option value="none">Please select</option>              <!-- Initial select -->
 			                    <option value="VIC">VIC</option>
 			                    <option value="NSW">NSW</option>
 			                    <option value="QLD">QLD</option>
@@ -78,30 +81,30 @@
                 			</select>
 	                    </p>
 	                    <p>
-                            <label for="post_code">Post Code</label>
-                            <input type="text" name="post_code" id="post_code" maxlength="4" size="4" required="required" />
+                            <label for="post_code">Post Code</label>                    <!-- post code -->
+                            <input type="text" name="post_code" id="post_code" maxlength="4" size="4" />
                         </p>
                     </fieldset>
 
                     <fieldset>
                         <legend>Contact Details</legend>
                         <p>
-                            <label for="phone">Phone Number</label>
+                            <label for="phone">Phone Number</label>                     <!-- phone number -->
                             <input type="text" name="phone" id="phone" maxlength="20" size="20"
                                 pattern="[\d\s]{8,12}" required="required" placeholder="Enter your phone number" />
                         </p>
-                        <div id="contactMethod">
+                        <div id="contactMethod">                                        <!-- preferred contact method -->
                         	<p>Preferred Contact:</p>
                         	<p>
-                        		<input type="radio" id="by_email" name="Contact" required="required" value="by_email" 
-			                    	   checked='checked'>
+                        		<input type="radio" id="by_email" name="Contact" required="required" value="by_email"     
+			                    	   checked='checked'>                                                           <!-- contact by email -->
 			                    <label for="by_email">Email</label>
 			                    <span>
-			                    	<input type="radio" id="by_post" name="Contact" value="by_post"/>
+			                    	<input type="radio" id="by_post" name="Contact" value="by_post"/>               <!-- contact by post -->
 			                        <label for="by_post">Post</label>
 			                    </span>
 			                    <span>
-			                    	<input type="radio" id="by_phone" name="Contact" value="by_phone"/>
+			                    	<input type="radio" id="by_phone" name="Contact" value="by_phone"/>             <!-- contact by phone -->
 			                        <label for="by_phone">Phone</label>
 			                    </span>
                 			</p>
@@ -109,18 +112,18 @@
                     </fieldset>
 
                     <fieldset>
-                        <legend>Enquiry</legend>
+                        <legend>Enquiry</legend>                <!-- enquiry section -->
                         <p>
-                        	<label for="enquire_about">Product:</label>
+                        	<label for="enquire_about">Product:</label>                <!-- enquire topic -->
 	                        <select required='required' id="enquire_about" name="enquire_about">
 			                    <option value="">What issue you want to enquire about</option>
-			                    <option value="car_price">Car prices</option>
-			                    <option value="warranty">Warranty</option>
-			                    <option value="services">Car services</option>
+			                    <option value="car_price">Car prices</option>            <!-- car price topic -->
+			                    <option value="warranty">Warranty</option>               <!-- warranty topic -->
+			                    <option value="services">Car services</option>           <!-- car services topic -->
                 			</select>
                         </p>
                         <div>
-                        	<p>Product features</p>
+                        	<p>Product features</p>                                    <!-- product featurs with checkbox inputs implementation -->
                             <p>
                             	<input type="checkbox" name="features[]" value="feature1" id="ft1" checked="checked">
                             	<label for="ft1">Feature 1</label>
@@ -136,7 +139,7 @@
                         </div>
                         
                         <p>
-                            <label for="cmt_text">Comments</label>
+                            <label for="cmt_text">Comments</label>                      <!-- ccomment section implmented by textarea input -->
                         </p>
                         <p>
                             <textarea id="cmt_text" name="comments" rows="4" cols="80"
@@ -294,5 +297,6 @@
 			<a href="mailto:101922778@student.swin.edu.au">Hy Gia Nguyen</a>
 		</p>
 	</footer>
+
 </body>
 </html>

@@ -38,9 +38,60 @@ function validateEnquire(){								 //return true when all the inputs are passed
 		result = false;
 	}
 	//Post code validation
-	if (!postCode.match(/^\d{4}$/)){					//Use regular expression to check the format of postcode
+	if (postCode == ""){									//post code must be entered
+		errMsg += "Post code cannot be left blank.\n";
+		result = false;
+	}
+	else if (!postCode.match(/^\d{4}$/)){					//Use regular expression to check the format of postcode
 		errMsg += "Your postcode must be a 4-digit number.\n";
 		result = false;
+	}
+	else{													//validate postcode accordingly to selected state
+		switch (state){
+			case "VIC":
+				if (postCode[0] != "3" && postCode[0] != "8"){					//VIC post code must start with 3 or 8
+					errMsg += "VIC post code must start with 3 or 8.\n";
+					result = false;
+				}
+				break;
+			case "NSW":
+				if (postCode[0] != "1" && postCode[0] != "2"){					//NSW post code must start with 1 or 2
+					errMsg += "NSW post code must start with 1 or 2.\n";
+					result = false;
+				}
+				break;
+			case "QLD":
+				if (postCode[0] != "4" && postCode[0] != "9"){					//QLD post code must start with 4 or 9
+					errMsg += "QLD post code must start with 4 or 9.\n";
+					result = false;
+				}
+				break;
+			case "WA":
+				if (postCode[0] != "6"){										//NA post code must start with 6
+					errMsg += "WA post code must start with 6.\n";
+					result = false;
+				}
+				break;
+			case "SA":
+				if (postCode[0] != "5"){										//SA post code must start with 5
+					errMsg += "SA post code must start with 5.\n";
+					result = false;
+				}
+				break;
+			case "TAS":
+				if (postCode[0] != "7"){										//TAS post code must start with 7
+					errMsg += "TAS post code must start with 7.\n";
+					result = false;
+				}
+				break;
+			case "NT":
+			case "ACT":
+				if (postCode[0] != "0"){										//NT and ACT post code must start with 0
+					errMsg += `${state} post code must start with 0.\n`;
+					result = false;
+				}
+				break;
+		}
 	}
 
 	//Quantity check
@@ -68,11 +119,11 @@ function validateEnquire(){								 //return true when all the inputs are passed
 		result = false;
 	}
 
-	if (result){
+	if (result){																			//If no errors, store all the information into client local storage
 		storeData(firstname, lastname, email, address, suburb, state, postCode, phone, getPreferredContact(), enquire, comment, isMerc, isAudi, isBMW, isTesla);
 	}
 
-	if (errMsg != "")
+	if (errMsg != "")																		//Display error message if there is any error
 		alert(errMsg);
 
 	return result;
@@ -83,9 +134,9 @@ function getPreferredContact(){
 	var contactMethod = "Unknown";
 	var methods = document.getElementById("contactMethod").getElementsByTagName("input");
 
-	for (var i = 0; i < methods.length; i++){
-		if (methods[i].checked)
-			contactMethod = methods[i].value;
+	for (var i = 0; i < methods.length; i++){				//Get all the checkbox inputs
+		if (methods[i].checked)								//If the input is checked
+			contactMethod = methods[i].value;				//Store the preferred contact method
 	}
 
 	return contactMethod;
@@ -150,7 +201,7 @@ function storeCarProperties(brand){			//if this car brand is selected, then prop
 	localStorage.setItem(priceID, document.getElementById(priceID).value);
 }
 
-function init(){
+function init(){							//This function gets triggered whenver the current page is loaded
 	var form = document.getElementById("enquireForm");
 	form.onsubmit = validateEnquire;
 }

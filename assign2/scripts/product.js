@@ -1,14 +1,14 @@
 "use strict"
 
-function move(){
+function move(){			//if the button is clicked, then redirect to enquire.html
 	window.location = "enquire.html";
 }
 
 
-function init(){
+function init(){			//initialisation
 	var btn = document.getElementsByClassName("buyBtn");
 	for (var i = 0; i < btn.length; i++){
-		btn[i].onclick = move;
+		btn[i].onclick = move;			//action happened when buy buttons are clicked
 	}
 }
 

@@ -24,38 +24,38 @@
 				<li><a href="about.html">About</a></li>
                 <li><a href="product.html">Products</a></li>
                 <li><a href="enquire.html">Enquiry</a></li>
-                <li><a href="enhancements.html">Enhancements</a></li>
+                <li><a href="enhancements2.html">Enhancements</a></li>
                 <li><a class="active" href="payment.html">Payment</a></li>
 			</ul>
 		</nav>
 	</header>
 
-	<main>
-		<h1>Please confirm the information below</h1>
-		<form id="paymentForm" method="post" action="https://mercury.swin.edu.au/it000000/formtest.php">
+	<main>					<!-- main content starts here -->
+		<h1 class="align-center">Please confirm the information below</h1>
+		<form id="paymentForm" method="post" action="https://mercury.swin.edu.au/it000000/formtest.php">		<!-- form to submit to server -->
 			<fieldset>				<!-- Customer's personal details -->
 				<legend>Personal details</legend>
-				<p>Full Name: <span id="fullName"></span></p>
-				<p>Email: <span id="email"></span></p>
-				<p>Address: <span id="address"></span></p>
-				<p>Suburb/Town: <span id="suburb"></span></p>
-				<p>State: <span id="state"></span></p>
-				<p>Post Code: <span id="postCode"></span></p>
-				<p>Phone number: <span id="phone"></span></p>
-				<p>Contact method: <span id="contact"></span></p>
+				<p>Full Name: <span id="fullName"></span></p>							<!-- name -->
+				<p>Email: <span id="email"></span></p>									<!-- email -->
+				<p>Address: <span id="address"></span></p>								<!-- address -->
+				<p>Suburb/Town: <span id="suburb"></span></p>							<!-- suburb -->
+				<p>State: <span id="state"></span></p>									<!-- state -->
+				<p>Post Code: <span id="postCode"></span></p>							<!-- post code-->
+				<p>Phone number: <span id="phone"></span></p>							<!-- phone -->
+				<p>Contact method: <span id="contact"></span></p>						<!-- contact method -->
 			</fieldset>
 
 			<fieldset>				<!-- Customer's enquiry details -->
 				<legend>Your enquiries</legend>
 				<p>Enquire about: <span id="enquire"></span></p>
-				<p>Chosen product features: <span id="feature"></span></p>
-				<p>Your comment: <span id="comment"></span></p>
+				<p>Chosen product features: <span id="feature"></span></p>				<!-- displays all the chosen products information from enquire.html -->
+				<p>Your comment: <span id="comment"></span></p>							<!-- customer's comment -->
 			</fieldset>
 
 			<fieldset>				<!-- Purchase information -->
 				<legend>Your Selected Products</legend>
 				<div id="purchases"></div>
-				<p>Total bill: <span id="cost"></span></p>
+				<p class="align-center">Total bill: <span id="cost"></span></p>			<!-- display total cost -->
 			</fieldset>
 
 			<fieldset>				<!-- Payment and card details -->
@@ -81,7 +81,7 @@
 					<input type="text" name= "cardExpiry" id="cardExpiry" placeholder="mm-yy" >
 				</p>
 				<p> 
-					<label for="cardCVV">Card verification value:</label> 
+					<label for="cardCVV">Card verification value:</label> 		<!-- Card CVV -->
 					<input type="text" name= "cardCVV" id="cardCVV"  >
 				</p>
 			</fieldset>
@@ -99,14 +99,14 @@
 			<input type="hidden" name="enquire" id="enquireSend">
 			<input type="hidden" name="features" id="featuresSend">
 			<input type="hidden" name="comment" id="commentSend">
+			<input type="hidden" name="purchases" id="purchasesSend">
+			<input type="hidden" name="cost" id="costSend">
 
 			<p>
-				<input type="submit" value="Check Out" class="button">
-				<input type="reset" value="Cancel Order" id="cancelOrder" class="button">
+				<input type="submit" value="Check Out" class="button">							<!-- submit form to server -->
+				<input type="reset" value="Cancel Order" id="cancelOrder" class="button">		<!-- destroy the memory and redirect to index.html -->
 			</p>
 		</form>
-
-		
 
 	</main>
 
