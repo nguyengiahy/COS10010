@@ -1,0 +1,225 @@
+/*  Name: Gia Hy Nguyen
+**  Student ID: 101922778
+**  Title: COS10010 final exam
+**  Created: 17/06/2020
+**  Last updated: 18/06/2020
+*/
+
+*{  /*Universal selector*/
+    font-family: calabri, sans-serif;   /*Apply font*/
+}
+
+body{   /*Initialise body appearance*/
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+/*Header section*/
+#logo{     /*style for logo */
+    width: 50px;
+    height: 50px;
+    float:left;
+}
+
+/*Navigation bar section*/
+nav{
+    background-color: #000;     /*Background color of nav bar*/
+    letter-spacing: .25em;
+}
+
+nav ul {    /*style for nav bar list*/
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    clear: both;    /*clear both left and right float from previous element*/
+}
+
+nav ul li {
+    float: left;    /*to display menu items next to each other on 1 line*/
+}
+
+nav ul li a {
+    display: block;
+    color: white;           /*text color*/
+    text-align: center;     /*text alignment*/
+    padding: 14px 16px;
+    text-decoration: none;  /*remove list decoration*/
+    transition: 0.6s;       /*transition time when hovering over menu items*/
+}
+
+.active, nav ul li a:hover {    /*effect when hovering over menu items*/
+    color:#fff;     
+    background-color:#008b8b;   /*change background color*/
+}
+
+/*Index.html section*/
+.seminar1{
+    background-image: url("images/seminar.jpg");    /*add background image for seminar 1*/
+}
+
+.seminar2{
+    background-image: url("images/seminar2.jpg");   /*add background image for seminar 2*/
+}
+
+section{
+    width: 100%;                /*width of section on screen*/
+    background-size: cover;     /*make background image cover the entire area*/
+}
+
+section .seminarContent{
+    width: 40%;
+    height: 100%;
+    padding: 50px;
+    display: inline-block;      /*to display content next to each other*/
+}
+
+section .seminarContent .seminarDesc{
+    padding: 40px;
+    color: #fff;
+    background: #000;
+    opacity: 0.5;       /*opacity for seminar title area*/
+    transition: .5s;    /*transition time when hovering over seminar title area*/
+}
+
+section .seminarContent .seminarDesc:hover{     /*effect when hovering over seminar title area*/
+    background: #8c1e16;    /*change background color*/
+    cursor: pointer;
+}
+
+section .seminarContent .seminarDesc h2{
+    padding: 0;
+    margin: 0;
+    font-size: 50px;
+    text-shadow: 2px 2px 5px red;       /*seminar title are formatted with the same text shadow style*/
+}
+
+section .seminarDate{       /*seminar date and content area*/
+    display: inline-block;
+    width: 40%;         /*display the date and content area with 40% of parent element's width*/
+    height: 100%;
+    background: #fff;
+    opacity: 0.8;       /*opacity for date and content area*/
+}
+
+section .seminarDate ul{    
+    padding: 10px 30px;
+}
+
+section .seminarDate ul li{     /*remove list style*/
+    list-style: none;
+}
+
+section .seminarDate ul li .date{
+    display: inline-block;  /*to display date and content next to each other*/
+    width: 20%;             /*date takes 20% of parent's width*/
+    text-align: center;
+}
+
+section .seminarDate .dateDesc{
+    display: inline-block;  /*to display date and content next to each other*/
+    width: 70%;             /*content takes 70% of parent's width*/
+    height: 100%;
+}
+
+button, .button{        /*style for buttons*/
+    background-color:#008b8b;
+    color:#fff;
+    padding:10px 50px;
+    border:none;
+    text-decoration:none;
+    transition: 0.6s;   /*transition time when hovering over it*/
+}
+
+button:hover, .button:hover{       /*effects when hovering over buttons*/
+    text-decoration:none;
+    color:#fff;
+    background-color:#000;
+    cursor: pointer;
+}
+
+.registerBtn{       /*style for LEARN MORE button area*/
+    text-align: center;
+    margin-bottom: 30px;
+    width: 50%;
+    margin-left: auto;      /*to align the content in center*/
+    margin-right: auto;     /*to align the content in center*/
+    background-image: url("images/register.jpg");   /*import background image*/
+    background-size: cover;     /*make the image cover entire area*/
+    color: #000;
+    padding: 30px;
+}
+
+.regBtn{
+    text-decoration: none;
+    color: #fff;
+}
+
+/*register.html section*/
+.alignCenter{
+    text-align: center;
+}
+form {      /*align the form to the center*/
+    width:50%;
+    margin: 20px auto;
+}
+
+fieldset {
+    border: 0;  /*remove border for fieldset*/
+}
+
+legend{ 
+    font-size: 1.5em;
+    font-weight: bold;
+    width: 100%;
+    border-bottom: 3px solid #380902;   /*add a bottom border for legends*/
+}
+
+input[type=text], input[type=email]{    /*style for text input and email input*/
+    padding: 10px;
+    margin-left: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color:#000;
+}
+
+input[type=radio] {
+    margin-left: 5%;
+}
+
+/*manager.php*/
+table{      /*align the table to the center*/
+    width: 50%;
+    margin: 0 auto;
+}
+table, th, td {
+  border: 1px solid black;
+}
+
+/*Footer*/
+footer p{
+    clear: both;
+    background-color: #008b8b;
+    padding: 3em 0;
+    text-align: center;
+    margin: 0;
+    font-size: small;
+    background-image: url("images/footerbg.jpg");       /*setting footer background image for additional requirement*/
+}
+footer a{
+    display: block;
+}
+
+.applyNow{
+    color: black;
+    background-color: white;
+    padding: 7px;
+    text-decoration: none;
+}
+
+.applyNow:hover{
+    background-color: grey;
+}
