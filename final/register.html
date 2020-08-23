@@ -1,0 +1,102 @@
+<!-- Name: Gia Hy Nguyen
+---- Student ID: 101922778
+---- Title: COS10010 final exam
+---- Created: 17/06/2020
+---- Last updated: 18/06/2020-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="Creating Web Applications Final Exam">
+	<meta name="keywords"    content="COS10010 final">
+	<meta name="author"      content="Gia Hy Nguyen">
+	<title>Register</title>
+	<link rel="stylesheet" type="text/css" href="styles/style.css">
+	<script src="scripts/register.js"></script>
+</head>
+<body>
+	<!-- Header section -->
+	<header>
+		<p>		<!-- logo image-->
+			<a href="index.html">
+				<img src="images/logo.jpg" id="logo" alt="logo">
+			</a>
+		</p>		
+		<h1>Seminars</h1>									<!-- page name -->
+	</header>
+
+	<!-- navigation bar -->
+	<nav>
+	<ul>
+	  <li><a href="index.html" >Home</a></li>						<!-- menu item -->
+	  <li><a href="register.html" class="active">Register</a></li>	<!-- menu item -->
+	  <li><a href="manager.php">Manager</a></li>					<!-- menu item -->
+	</ul>
+	</nav>
+
+	<!-- registration form -->
+	<section>
+		<h2 class="alignCenter">Application Form</h2>		<!-- form title -->
+		<form method="post" action="process.php" id="registrationForm">
+			<fieldset>
+				<legend>Seminar registration</legend>
+				<p>
+                    <label for="referenceNumber">Seminar's reference number:</label>
+                    <input type="text" name="referenceNumber" id="referenceNumber">
+                </p>
+			</fieldset>
+			<br>
+			<fieldset>
+				<legend>Personal details</legend>
+				<p>
+                    <label for="username">Username:</label>
+                    <input type="text" name="username" id="username">
+                </p>
+                <div>
+                	<label>Qualification:</label>
+                	<p>
+                		<input type="radio" id="undergraduate" name="qualification" value="undergraduate">
+	                    <label for="undergraduate">Undergraduate</label>
+	                    <span>
+	                    	<input type="radio" id="postgraduate" name="qualification" value="postgraduate"/>
+	                        <label for="postgraduate">Postgraduate</label>
+	                    </span>
+        			</p>
+                </div>
+                <p>
+                    <label for="email">Email Address:</label>
+                    <input type="email" name="email" id="email">
+                </p>
+                <p>
+                    <label for="phone">Phone Number:</label>
+                    <input type="text" name="phone" id="phone">
+                </p>
+			</fieldset>
+			<br>
+			<fieldset>
+				<legend>Additional Requirements</legend>
+				<p>
+					<label for="role">Role:</label>
+                    <select id="role" name="role">
+	                    <option value="organiser">Organiser</option>
+	                    <option value="participant">Participant</option>
+        			</select>
+				</p>
+			</fieldset>
+
+			<div class="alignCenter">
+				<input type="submit" name="Submit" class="button">
+				<input type="reset" name="Reset" class="button">
+			</div>
+		</form>
+	</section>
+
+	<!-- Footer -->
+	<footer>
+		<p> <a href="https://www.swinburne.edu.au">&copy; Swinburne University of Technology</a>
+			<span>Mark up by: </span>
+			<a href="mailto:101922778@student.swin.edu.au">Gia Hy Nguyen</a>
+		</p>
+	</footer>
+</body>
+</html>
